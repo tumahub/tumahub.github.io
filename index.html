@@ -6,45 +6,59 @@
     <title>Cameron Mitchell | CS 499 ePortfolio</title>
 </head>
 <body>
-    <h1>Welcome to My ePortfolio</h1>
-    <p>CS 499 Capstone - Computer Science</p>
-    <p><a href="https://github.com/tumahub/tumahub.github.io">View Repository</a></p>
 
-    <h2>Code Review</h2>
-    <p>Here is my informal code review for the Contact Service artifact from CS 320:</p>
-    
-    <iframe width="800" height="450" 
-            src="https://www.youtube.com/embed/O-fXQf0RmKo" 
-            title="CS 499 Code Review - Cameron Mitchell" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-    </iframe>
+<h1>Cameron Mitchell | CS 499 ePortfolio</h1>
 
-    <p>Coming soon: Enhanced Artifacts, and Professional Self-Assessment</p>
-</body>
-</html>
+<h2>Welcome to My ePortfolio</h2>
+<p>CS 499 Capstone - Computer Science</p>
+<p><a href="https://github.com/tumahub/tumahub.github.io">View Repository</a></p>
+
+<h2>Code Review</h2>
+<p>Here is my informal code review for the Contact Service artifact from CS 320:</p>
+<p><a href="https://youtu.be/O-fXQf0RmKo" target="_blank">Watch the Code Review Video</a></p>
 
 <h2>Software Design and Engineering</h2>
-
 <p>
   For this enhancement I took the Contact Service I originally built in CS 320 and refactored it into a Python Flask REST API. 
   The main goal was to move away from a single-file script and into a proper layered architecture with a repository layer and a service layer. 
   This made the code much cleaner and easier to maintain. I also added full CRUD functionality while keeping the same strict validation rules from the original Java version.
 </p>
-
 <p>This work shows I can take an existing project and improve its structure using better software engineering practices.</p>
 
 <h3>Screenshots of Key Changes</h3>
-
-<img src="images/MS1_Tree.png" alt="Project folder structure showing layered architecture" width="650"><br><br>
-
-<img src="images/MS1_contact_repository.png" alt="ContactRepository class showing the repository pattern" width="650"><br><br>
-
-<img src="images/MS1_app.png" alt="Main Flask app.py file with routes" width="650"><br><br>
+<img src="images/MS1_Tree.png" alt="Project folder structure showing the enhanced Contact Service files" width="650"><br><br>
+<img src="images/MS1_contact_repository.png" alt="ContactRepository code showing the layered repository pattern" width="650"><br><br>
+<img src="images/MS1_app.png" alt="app.py showing the clean Flask routes and architecture" width="650"><br><br>
 
 <p>
   <strong>Links:</strong><br>
   <a href="https://github.com/tumahub/tumahub.github.io/tree/main/enhanced" target="_blank">View the Enhanced Code</a> &nbsp;|&nbsp; 
   <a href="https://youtu.be/O-fXQf0RmKo" target="_blank">Watch the Code Review Video</a>
 </p>
+
+<h2>Algorithms and Data Structures</h2>
+<p>
+  For the Algorithms and Data Structures category I enhanced the Contact Service artifact from CS 320. In the original Java version contacts were stored in an ArrayList and finding one by ID required a linear search through the entire list. That approach has O(n) time complexity in the worst case, which gets slow as the number of contacts grows.
+</p>
+<p>
+  To fix that I refactored the ContactRepository to use a Python dictionary (a HashMap) so contacts are stored by contactID. This lets find_by_id run in O(1) average time instead of scanning the whole list. I also added a separate sorted_contacts list and used bisect.insort to keep it sorted by last name whenever a new contact is added. That way the get_all_contacts_sorted method (and the /contacts/sorted endpoint) can return results quickly without sorting the whole collection every single time.
+</p>
+<p>
+  These changes were important because they show real performance improvements using well-known data structures and algorithms. The HashMap makes lookups much faster for everyday use, and maintaining the sorted list with logarithmic insertion beats the cost of sorting on every request. There is a small memory trade-off for keeping both structures, but the speed gain is worth it for a service that might see many calls. Screenshots below show exactly where I made these updates in the code.
+</p>
+
+<h3>Screenshots of Key Changes</h3>
+<img src="images/MS1_Tree.png" alt="Project folder structure showing the enhanced Contact Service files" width="650"><br><br>
+<img src="images/MS1_contact_repository.png" alt="ContactRepository code showing HashMap dictionary and bisect.insort for sorted list" width="650"><br><br>
+<img src="images/MS1_app.png" alt="app.py showing the /contacts/sorted endpoint that uses the efficient sorted list" width="650"><br><br>
+
+<p>
+  <strong>Links:</strong><br>
+  <a href="https://github.com/tumahub/tumahub.github.io/tree/main/enhanced" target="_blank">View the Enhanced Code</a> &nbsp;|&nbsp; 
+  <a href="https://youtu.be/O-fXQf0RmKo" target="_blank">Watch the Code Review Video</a>
+</p>
+
+<p>Coming soon: Databases enhancement and Professional Self-Assessment</p>
+
+</body>
+</html>
